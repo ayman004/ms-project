@@ -1,9 +1,7 @@
 """This IDPS is developed for the masters project.
 	This is the ***Rate Limiting Algorithm***
-	AKA RL algorithm
+	AKA RL algorithm		
 		
-	This code can be found in github
-	
 	"""
 #Import modules and libraries required
 from pox.core import core                      # This is the main POX object
