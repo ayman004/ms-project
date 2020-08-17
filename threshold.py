@@ -1,8 +1,6 @@
 """This IDPS is developed for the masters project.
 	This is the ***Threshold Limiting Algorithm***
-	
-	This code can be found in github
-	https://github.com/ayman004/ms-project
+		T
 	"""
 	
 #Import modules and libraries required
