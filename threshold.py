@@ -146,9 +146,8 @@ def test (event):
         else:
 			log.info("Something went terribly wrong!!!")
 			pass
-
+		
         RST_attack(packetdetails)
-
 
 def launch():
     core.openflow.addListenerByName("PacketIn",test, priority=1)
