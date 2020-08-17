@@ -72,7 +72,7 @@ def test (event):
     srcadd = packet.src
     dstadd = packet.dst
     #Store connection info in the format as
-	#[source MAC, destination MAC, SYN, ACK, RST]
+    #[source MAC, destination MAC, SYN, ACK, RST]
     cinfo = [srcadd,dstadd,1,0,0,0,time()]
 
     #If MAC of source host is blacklisted halt traffic
@@ -80,7 +80,7 @@ def test (event):
         return EventHalt
 
     #TCP flags are PSH,URG,ECN,FIN,CWR pass
-	if True in [tcp_packet.PSH,tcp_packet.URG,tcp_packet.ECN,tcp_packet.FIN,tcp_packet.CWR]:
+    if True in [tcp_packet.PSH,tcp_packet.URG,tcp_packet.ECN,tcp_packet.FIN,tcp_packet.CWR]:
 			return
 
     #Check if there is a content in the packet
@@ -106,7 +106,6 @@ def test (event):
                           block(srcadd)
 
         elif tcp_packet.SYN and  tcp_packet.ACK:
-
           #get packet packetdetails
           for packet in packetdetails:
               if packet[0] == dstadd and packet[1] == srcadd:
@@ -120,7 +119,7 @@ def test (event):
                         packet[4] += 1
 
             else:
-                packetdetails.append([srcadd,dstadd,0,0,1,0])
+                packetdetails.append([srcadd,dstadd,0,0,1,0,time()])
 
         #If TCP flag is SYN-ACK
         elif tcp_packet.SYN and  tcp_packet.ACK:
@@ -140,7 +139,7 @@ def test (event):
                         packet[4] +=  1                    
 			#start tracking connection
             else:
-                packetdetails.append([srcadd,dstadd,0,0,1,0])
+                packetdetails.append([srcadd,dstadd,0,0,1,0,time()])
 
         elif tcp_packet.RST:
             #print(srcadd ,' ',ip.srcip,' =>  ', dstadd,' ',ip.dstip, ' RST')
@@ -153,7 +152,7 @@ def test (event):
                         packet[5] += 1
             #start tracking connection
             else:
-                packetdetails.append([srcadd,dstadd,0,0,0,1])
+                packetdetails.append([srcadd,dstadd,0,0,0,1,time()])
 
         else:
 			log.info("Something went terribly wrong!!!")
