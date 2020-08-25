@@ -1,6 +1,6 @@
 """This IDPS is developed for the masters project.
 	This is the ***Threshold Limiting Algorithm***
-		T
+	
 	"""
 	
 #Import modules and libraries required
@@ -60,7 +60,7 @@ def test (event):
     srcadd = packet.src
     dstadd = packet.dst
     #Store connection info in the format as
-	#[source MAC, destination MAC, SYN, ACK, RST]
+    #[source MAC, destination MAC, SYN, ACK, RST]
     cinfo = [srcadd,dstadd,1,0,0,0]
 
     #If MAC of source host is blacklisted halt traffic
